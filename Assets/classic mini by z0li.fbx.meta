@@ -1,0 +1,329 @@
+fileFormatVersion: 2
+guid: 754acd3af2e1e4a42b193af7ecef0268
+timeCreated: 1496253582
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: back
+    100002: bumper front
+    100004: bumper rear
+    100006: Camera 3
+    100008: chrome back
+    100010: chrome frontdoor
+    100012: chrome sides
+    100014: //RootNode
+    100016: doorhandle
+    100018: doorhandle.001
+    100020: doors
+    100022: front chrome
+    100024: front lower
+    100026: front shadow
+    100028: glass back
+    100030: glass front
+    100032: glass front chrome
+    100034: glass frontdoor
+    100036: glass sides
+    100038: grill
+    100040: hinge frontdoor
+    100042: hood
+    100044: hood ornament
+    100046: hood.001
+    100048: lamps back chrome
+    100050: lamps back glass
+    100052: lamps front
+    100054: lamps front bottom
+    100056: lamps front bottom glass
+    100058: lamps front glass
+    100060: rim
+    100062: rim chrome
+    100064: rim chrome_MeshPart0
+    100066: rim chrome_MeshPart1
+    100068: rim_MeshPart0
+    100070: rim_MeshPart1
+    100072: rim_MeshPart2
+    100074: rim_MeshPart3
+    100076: roof
+    100078: seats
+    100080: sidefalz
+    100082: sidemirror
+    100084: sides
+    100086: sides_MeshPart0
+    100088: sides_MeshPart1
+    100090: sides_MeshPart2
+    100092: sidesfalz bottom
+    100094: steering wheel
+    100096: tankcaps
+    100098: target 3
+    100100: tires
+    100102: trunk
+    100104: wiper 1
+    100106: wiper 2
+    400000: back
+    400002: bumper front
+    400004: bumper rear
+    400006: Camera 3
+    400008: chrome back
+    400010: chrome frontdoor
+    400012: chrome sides
+    400014: //RootNode
+    400016: doorhandle
+    400018: doorhandle.001
+    400020: doors
+    400022: front chrome
+    400024: front lower
+    400026: front shadow
+    400028: glass back
+    400030: glass front
+    400032: glass front chrome
+    400034: glass frontdoor
+    400036: glass sides
+    400038: grill
+    400040: hinge frontdoor
+    400042: hood
+    400044: hood ornament
+    400046: hood.001
+    400048: lamps back chrome
+    400050: lamps back glass
+    400052: lamps front
+    400054: lamps front bottom
+    400056: lamps front bottom glass
+    400058: lamps front glass
+    400060: rim
+    400062: rim chrome
+    400064: rim chrome_MeshPart0
+    400066: rim chrome_MeshPart1
+    400068: rim_MeshPart0
+    400070: rim_MeshPart1
+    400072: rim_MeshPart2
+    400074: rim_MeshPart3
+    400076: roof
+    400078: seats
+    400080: sidefalz
+    400082: sidemirror
+    400084: sides
+    400086: sides_MeshPart0
+    400088: sides_MeshPart1
+    400090: sides_MeshPart2
+    400092: sidesfalz bottom
+    400094: steering wheel
+    400096: tankcaps
+    400098: target 3
+    400100: tires
+    400102: trunk
+    400104: wiper 1
+    400106: wiper 2
+    2300000: back
+    2300002: bumper front
+    2300004: bumper rear
+    2300006: chrome back
+    2300008: chrome frontdoor
+    2300010: chrome sides
+    2300012: doorhandle
+    2300014: doorhandle.001
+    2300016: doors
+    2300018: front chrome
+    2300020: front lower
+    2300022: front shadow
+    2300024: glass back
+    2300026: glass front
+    2300028: glass front chrome
+    2300030: glass frontdoor
+    2300032: glass sides
+    2300034: grill
+    2300036: hinge frontdoor
+    2300038: hood
+    2300040: hood ornament
+    2300042: hood.001
+    2300044: lamps back chrome
+    2300046: lamps back glass
+    2300048: lamps front
+    2300050: lamps front bottom
+    2300052: lamps front bottom glass
+    2300054: lamps front glass
+    2300056: rim chrome_MeshPart0
+    2300058: rim chrome_MeshPart1
+    2300060: rim_MeshPart0
+    2300062: rim_MeshPart1
+    2300064: rim_MeshPart2
+    2300066: rim_MeshPart3
+    2300068: roof
+    2300070: seats
+    2300072: sidefalz
+    2300074: sidemirror
+    2300076: sides_MeshPart0
+    2300078: sides_MeshPart1
+    2300080: sides_MeshPart2
+    2300082: sidesfalz bottom
+    2300084: steering wheel
+    2300086: tankcaps
+    2300088: tires
+    2300090: trunk
+    2300092: wiper 1
+    2300094: wiper 2
+    3300000: back
+    3300002: bumper front
+    3300004: bumper rear
+    3300006: chrome back
+    3300008: chrome frontdoor
+    3300010: chrome sides
+    3300012: doorhandle
+    3300014: doorhandle.001
+    3300016: doors
+    3300018: front chrome
+    3300020: front lower
+    3300022: front shadow
+    3300024: glass back
+    3300026: glass front
+    3300028: glass front chrome
+    3300030: glass frontdoor
+    3300032: glass sides
+    3300034: grill
+    3300036: hinge frontdoor
+    3300038: hood
+    3300040: hood ornament
+    3300042: hood.001
+    3300044: lamps back chrome
+    3300046: lamps back glass
+    3300048: lamps front
+    3300050: lamps front bottom
+    3300052: lamps front bottom glass
+    3300054: lamps front glass
+    3300056: rim chrome_MeshPart0
+    3300058: rim chrome_MeshPart1
+    3300060: rim_MeshPart0
+    3300062: rim_MeshPart1
+    3300064: rim_MeshPart2
+    3300066: rim_MeshPart3
+    3300068: roof
+    3300070: seats
+    3300072: sidefalz
+    3300074: sidemirror
+    3300076: sides_MeshPart0
+    3300078: sides_MeshPart1
+    3300080: sides_MeshPart2
+    3300082: sidesfalz bottom
+    3300084: steering wheel
+    3300086: tankcaps
+    3300088: tires
+    3300090: trunk
+    3300092: wiper 1
+    3300094: wiper 2
+    4300000: sidemirror
+    4300002: steering wheel
+    4300004: seats
+    4300006: tankcaps
+    4300008: wiper 2
+    4300010: wiper 1
+    4300012: front shadow
+    4300014: bumper front
+    4300016: bumper rear
+    4300018: hinge frontdoor
+    4300020: tires
+    4300022: rim chrome_MeshPart0
+    4300024: rim chrome_MeshPart1
+    4300026: rim_MeshPart0
+    4300028: rim_MeshPart1
+    4300030: rim_MeshPart2
+    4300032: rim_MeshPart3
+    4300034: doorhandle.001
+    4300036: lamps back glass
+    4300038: doorhandle
+    4300040: lamps front bottom glass
+    4300042: lamps front glass
+    4300044: lamps back chrome
+    4300046: chrome back
+    4300048: glass back
+    4300050: chrome sides
+    4300052: glass sides
+    4300054: chrome frontdoor
+    4300056: glass frontdoor
+    4300058: glass front chrome
+    4300060: glass front
+    4300062: hood ornament
+    4300064: lamps front bottom
+    4300066: lamps front
+    4300068: front chrome
+    4300070: grill
+    4300072: sidesfalz bottom
+    4300074: sidefalz
+    4300076: trunk
+    4300078: hood.001
+    4300080: front lower
+    4300082: back
+    4300084: roof
+    4300086: sides_MeshPart0
+    4300088: sides_MeshPart1
+    4300090: sides_MeshPart2
+    4300092: hood
+    4300094: doors
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
