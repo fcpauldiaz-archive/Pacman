@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 public class ghostScript : MonoBehaviour {
 
     public GameObject target;   //this is the player or a reference for him
-    NavMeshAgent agent;         //this is a reference for the ghost navmeshagent component
+    UnityEngine.AI.NavMeshAgent agent;         //this is a reference for the ghost navmeshagent component
 
 	// Use this for initialization
 	void Start () {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (target == null)
             target = GameObject.FindGameObjectWithTag("Player");
 	}
