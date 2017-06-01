@@ -10,10 +10,15 @@ public class pacman : MonoBehaviour {
 	public float rotationSpeed = 50f;
 	public float horizontalSpeed = 2.0F;
 	public float verticalSpeed = 2.0F;
+	public GameObject cameraPlayer;
+	public GameObject cameraMenu;
 	// Use this for initialization
 	void Start () {
 		pacm = GameObject.Find ("pacman");
-
+		cameraPlayer = GameObject.Find ("Camera");
+		cameraMenu = GameObject.Find ("CameraMenu");
+		cameraPlayer.SetActive (false);
+		//cameraMenu.SetActive(false);
 		Debug.Log ("test");
 	}
 	
