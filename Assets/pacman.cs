@@ -16,6 +16,7 @@ public class pacman : MonoBehaviour {
 	public Button newGame;
 	public GameObject menu;
 	public Button startButton;
+	public bool gamePaused = false;
 
 	// Use this for initialization
 	void Start () {
@@ -47,6 +48,23 @@ public class pacman : MonoBehaviour {
 
 
 		}
+
+		//PS4 OPTIONS BUTTON
+		if (Input.GetKeyDown ("joystick button 9")) {
+			gamePaused = !gamePaused;
+			if (gamePaused == true) {
+				cameraMenu.SetActive (true);
+				menu.SetActive (true);
+				cameraPlayer.SetActive (false);
+			} else {
+				cameraMenu.SetActive (false);
+				menu.SetActive (false);
+				cameraPlayer.SetActive (true);
+			}
+
+
+		}
+
 		// PS4 MAIN JOYSTICKS
 		float h = horizontalSpeed * Input.GetAxis("PS4_RIGHTANALOG_HORIZONTAL");
 		float v = rotationSpeed * Input.GetAxis ("PS4_RIGHTANALOG_VERTICAL");
