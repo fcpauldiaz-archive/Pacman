@@ -64,12 +64,10 @@ public class pacman : MonoBehaviour {
 
 
 		}
-
-		// PS4 MAIN JOYSTICKS
 		float h = horizontalSpeed * Input.GetAxis("PS4_RIGHTANALOG_HORIZONTAL");
 		float v = rotationSpeed * Input.GetAxis ("PS4_RIGHTANALOG_VERTICAL");
-		Debug.Log (v);
-		pacm.transform.Rotate(v, h, 0);
+		pacm.transform.Rotate(0, h, 0);
+		// PS4 MAIN JOYSTICKS
 		float translation = Input.GetAxis("Vertical") * moveSpeed;
 		float translationX = Input.GetAxis("Horizontal") * moveSpeed;
 		translation *= Time.deltaTime;
@@ -77,13 +75,23 @@ public class pacman : MonoBehaviour {
 		pacm.transform.Translate(-translation, 0, 0);
 		pacm.transform.Translate(0, 0, translationX);
 
+		cameraPlayer.transform.Rotate (v, 0, 0);
 
 	}
 
-	void startOnClick()
+	public void startOnClick()
 	{
 		menu.SetActive (false);
 		cameraMenu.SetActive(false);
 		cameraPlayer.SetActive (true);
 	}
+
+	public void OnCollisionEnter (Collision col) {
+		Debug.Log ("collision");
+		Debug.Log (col.gameObject.name);
+	}
+	public void OnControllerColliderHit (ControllerColliderHit hit) {
+		Debug.Log ("collision hit");
+	}
+
 }
