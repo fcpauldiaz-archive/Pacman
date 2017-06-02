@@ -17,6 +17,7 @@ public class pacman : MonoBehaviour {
 	public GameObject menu;
 	public Button startButton;
 	public bool gamePaused = false;
+	public bool inversePlay = false;
 
 	// Use this for initialization
 	void Start () {
@@ -89,9 +90,21 @@ public class pacman : MonoBehaviour {
 	public void OnCollisionEnter (Collision col) {
 		Debug.Log ("collision");
 		Debug.Log (col.gameObject.name);
+
+		// Physics.IgnoreCollision(col.gameObject.GetComponent<SphereCollider>(), GetComponent<SphereCollider>());
+
 	}
-	public void OnControllerColliderHit (ControllerColliderHit hit) {
-		Debug.Log ("collision hit");
+
+	public void OnTriggerEnter(Collider col) {
+		Debug.Log ("Trigger");
+
+		if (col.gameObject.name.Contains("apple")) {
+			Destroy(col.gameObject);
+		}
+		if (col.gameObject.name.Contains("cherry")) {
+			Destroy(col.gameObject);
+		}
 	}
+
 
 }
