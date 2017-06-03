@@ -16,11 +16,13 @@ public class pacman : MonoBehaviour {
 	public Button newGame;
 	public GameObject menu;
 	public Button startButton;
-	public bool gamePaused = false;
+	public bool gamePaused = true;
 	public bool inversePlay = false;
+	public int score;
 
 	// Use this for initialization
 	void Start () {
+		gamePaused = true;
 		pacm = GameObject.Find ("pacman");
 		cameraPlayer = GameObject.Find ("Camera");
 		cameraMenu = GameObject.Find ("CameraMenu");
@@ -34,6 +36,7 @@ public class pacman : MonoBehaviour {
 		Debug.Log ("test");
 
 	}
+		
 	
 	// Update is called once per frame
 	void Update () {
@@ -85,10 +88,12 @@ public class pacman : MonoBehaviour {
 		menu.SetActive (false);
 		cameraMenu.SetActive(false);
 		cameraPlayer.SetActive (true);
+		gamePaused = false;
+
 	}
 
 	public void OnCollisionEnter (Collision col) {
-		Debug.Log ("collision");
+		
 		Debug.Log (col.gameObject.name);
 
 		// Physics.IgnoreCollision(col.gameObject.GetComponent<SphereCollider>(), GetComponent<SphereCollider>());
@@ -99,10 +104,18 @@ public class pacman : MonoBehaviour {
 		Debug.Log ("Trigger");
 
 		if (col.gameObject.name.Contains("apple")) {
+			score = score + 1;
 			Destroy(col.gameObject);
 		}
 		if (col.gameObject.name.Contains("cherry")) {
 			Destroy(col.gameObject);
+		}
+	}
+
+	public void OnGUI(){
+		if (gamePaused == false) {
+			Debug.Log (Screen.width);
+			GUI.Box(new Rect(Screen.width/2+200,Screen.height/2-150,100,25), "Score " + score);
 		}
 	}
 
