@@ -24,6 +24,7 @@ public class pacman : MonoBehaviour {
 	public static bool resetGame = false;
 	public int score;
 	public float targetTime = 10.0f;
+	public AudioSource[] allAudio;
 
 	// Use this for initialization
 	void Start () {
@@ -36,7 +37,7 @@ public class pacman : MonoBehaviour {
 		cameraPlayer.SetActive (false);
 		startButton = GameObject.Find("Continue").GetComponent<Button>();
 		newGameButton = GameObject.Find ("Newgame").GetComponent<Button> ();
-
+		allAudio  = GetComponents<AudioSource>();
 		startButton.onClick.AddListener(startOnClick);
 		newGameButton.onClick.AddListener (newGameClick);
 		menu = GameObject.Find ("MainMenu");
@@ -117,6 +118,11 @@ public class pacman : MonoBehaviour {
 				}
 
 			}
+
+			if (score >= 70) {
+				//player wins or finish this level.
+
+			}
 		}
 
 
@@ -128,6 +134,8 @@ public class pacman : MonoBehaviour {
 		cameraMenu.SetActive(false);
 		cameraPlayer.SetActive (true);
 		gamePaused = false;
+		allAudio [0].Stop ();
+		allAudio [1].Play ();
 
 	}
 
@@ -152,11 +160,15 @@ public class pacman : MonoBehaviour {
 		if (col.gameObject.name.Contains ("ghost")) {
 			//lost game or one heart
 			if (inversePlay == false) {
+				allAudio [1].Stop ();
+				allAudio [2].Play ();
 				gamePaused = true;
 				cameraMenu.SetActive (true);
 				menu.SetActive (true);
 				cameraPlayer.SetActive (false);
+				SceneManager.LoadScene("Sample");
 			} else {
+				allAudio [3].Play ();
 				//earn points for eating a ghost
 				score = score + 10;
 				//reset ghost position to some standard
