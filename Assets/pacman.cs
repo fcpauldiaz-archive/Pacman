@@ -43,6 +43,7 @@ public class pacman : MonoBehaviour {
 		allAudio  = GetComponents<AudioSource>();
 		startButton.onClick.AddListener(startOnClick);
 		newGameButton.onClick.AddListener (newGameClick);
+
 		menu = GameObject.Find ("MainMenu");
 		if (resetGame == true) {
 			startOnClick ();
@@ -175,6 +176,8 @@ public class pacman : MonoBehaviour {
 		gamePaused = false;
 		allAudio [0].Stop ();
 		allAudio [1].Play ();
+		Camera mapCamera = GameObject.Find("MapCamera").GetComponent<Camera>();
+		mapCamera.enabled = true;
 
 	}
 
@@ -188,6 +191,7 @@ public class pacman : MonoBehaviour {
 		Debug.Log (col.gameObject.name);
 
 		if (col.gameObject.name.Contains("apple")) {
+			allAudio [5].Play ();
 			score = score + 1;
 			Destroy(col.gameObject);
 		}
