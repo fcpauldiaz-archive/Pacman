@@ -23,8 +23,11 @@ public class pacman : MonoBehaviour {
 	public bool inversePlay = false;
 	public static bool resetGame = false;
 	public int score;
-	public float targetTime = 5.0f;
+	public float targetTime = 0.2f;
+	public float rBase = 180f;
+	public float staticYPacm;
 	public AudioSource[] allAudio;
+	public float speed = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +48,7 @@ public class pacman : MonoBehaviour {
 			startOnClick ();
 		}
 		resetGame = false;
-
+		staticYPacm = pacm.transform.position.y;
 
 	}
 		
@@ -57,27 +60,63 @@ public class pacman : MonoBehaviour {
 		if (Input.GetKeyDown ("joystick button 0")){
 			firstPersonView = !firstPersonView;
 			if (firstPersonView == true) {
-				Camera.main.transform.Translate(Vector3.forward * 25f);  
+				
+				//Camera.main.transform.Translate(Vector3.forward * 25f);  
+				Vector3 fwrd = new Vector3 (-0.01990253f, 0.2234014f, 0.1f);
+				Camera.main.transform.localPosition = fwrd;
+
 			} else {
-				Camera.main.transform.Translate(Vector3.back * 25f);  
+				//Camera.main.transform.Translate(Vector3.back * 25f);  
+				Vector3 bkw = new Vector3 (1.583f, 0.6799f, 0.1f);
+				Camera.main.transform.localPosition = bkw;
+
 			}
 
 
 		}
 		if (gamePaused == false) {
+			if (pacm.transform.position.y != staticYPacm) {
+				//Vector3 temp2 = pacm.transform.position; // copy to an auxiliary variable...
+				//temp2.y = staticYPacm;
+				//pacm.transform.position = temp2;
+
+
+			}
+
 			foreach (GameObject gh in ghosts)
 			{
 				// pacman runs away from ghosts
 				if (inversePlay == false) {
-					float step = (50f + Random.Range(-10.0f, 30.0f)) * Time.deltaTime;
+					float step = (50f + Random.Range(-20.0f, 40.0f)) * Time.deltaTime;
+					//gh.transform.Rotate(0, 0 , 180 + Random.Range(-30.0f, 30.0f));
 					gh.transform.position = Vector3.MoveTowards(gh.transform.position, pacm.transform.position, step);
 				}
 				// ghosts run away from pacman
 				else {
 					gh.transform.LookAt (pacm.transform.position);
-					gh.transform.Rotate(0, 180 + Random.Range(-30.0f, 30.0f) , 0); 
-					gh.transform.Translate(Vector3.forward); 
+
+
+					if (gh.transform.position.x >= 520f || gh.transform.position.x <= -368f
+					    || gh.transform.position.z >= 205f || gh.transform.position.z <= -290f) {
+						rBase = 90f;
+					} else if (gh.transform.position.x <= 520f || gh.transform.position.x >= -350f
+					            || gh.transform.position.z <= 190f || gh.transform.position.z >= -263f) { 
+						rBase = 180f;
+					}
+					else {
+						//rBase = 180f;
+					}
+
+					gh.transform.Rotate(0, rBase + Random.Range(-40.0f, 40.0f) , 0); 
+					gh.transform.Translate(new Vector3(0, 0, 1.2f));
 				}
+
+				Vector3 temp2 = gh.transform.position; // copy to an auxiliary variable...
+
+				temp2.y = 97f;
+
+				gh.transform.position = temp2;
+				//Debug.Log ("y pos " + gh.transform.position.y);
 
 
 			}
@@ -140,7 +179,7 @@ public class pacman : MonoBehaviour {
 	}
 
 	public void OnCollisionEnter (Collision col) {
-		
+		Debug.Log ("hit " + col.gameObject.name);
 		// Physics.IgnoreCollision(col.gameObject.GetComponent<SphereCollider>(), GetComponent<SphereCollider>());
 
 	}
@@ -194,6 +233,7 @@ public class pacman : MonoBehaviour {
 		inversePlay = false;
 		allAudio [4].Stop ();
 		allAudio [1].Play ();
+		targetTime = 0.2f;
 
 	}
 
