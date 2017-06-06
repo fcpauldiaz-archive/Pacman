@@ -9,8 +9,8 @@ public class pacman : MonoBehaviour {
 	public GameObject pacm;
 	public bool firstPersonView = false;
 	public float moveSpeed = 10000f;
-	public float rotationSpeed = 50f;
-	public float horizontalSpeed = 2.0F;
+	public float rotationSpeed = 2.0f;
+	public float horizontalSpeed = 50F;
 	public float verticalSpeed = 2.0F;
 	public GameObject cameraPlayer;
 	public GameObject cameraMenu;
@@ -23,7 +23,7 @@ public class pacman : MonoBehaviour {
 	public bool inversePlay = false;
 	public static bool resetGame = false;
 	public int score;
-	public float targetTime = 10.0f;
+	public float targetTime = 5.0f;
 	public AudioSource[] allAudio;
 
 	// Use this for initialization
@@ -119,7 +119,7 @@ public class pacman : MonoBehaviour {
 
 			}
 
-			if (score >= 70) {
+			if (score >= 30) {
 				//player wins or finish this level.
 
 			}
@@ -155,6 +155,8 @@ public class pacman : MonoBehaviour {
 		if (col.gameObject.name.Contains("cherry")) {
 			
 			inversePlay = true;
+			allAudio [1].Stop ();
+			allAudio [4].Play ();
 			Destroy(col.gameObject);
 		}
 		if (col.gameObject.name.Contains ("ghost")) {
@@ -190,6 +192,9 @@ public class pacman : MonoBehaviour {
 
 	public void timerEnded() {
 		inversePlay = false;
+		allAudio [4].Stop ();
+		allAudio [1].Play ();
+
 	}
 
 	public void newGameClick() {
