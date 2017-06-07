@@ -48,10 +48,11 @@ public class pacman : MonoBehaviour {
 		startButton.onClick.AddListener(startOnClick);
 		newGameButton.onClick.AddListener (newGameClick);
 		win = GameObject.Find ("WinnerPannel");
-		win.SetActive (false);
+		win.SetActive (winner);
 		loose = GameObject.Find ("LooserPanel");
-		loose.SetActive (false);
-
+		loose.SetActive (looser);
+		looser = false;
+		winner = false;
 		menu = GameObject.Find ("MainMenu");
 		if (resetGame == true) {
 			startOnClick ();
@@ -165,12 +166,16 @@ public class pacman : MonoBehaviour {
 
 			}
 
-			if (score >= 50) {
+			if (score >= 30) {
 				//player wins or finish this level.
+				allAudio [1].Stop ();
+				allAudio [2].Play ();
+				gamePaused = true;
 				cameraMenu.SetActive (true);
-				win.SetActive (true);
+				menu.SetActive (true);
 				cameraPlayer.SetActive (false);
-
+				winner = true;
+				SceneManager.LoadScene("Level1");
 			}
 		}
 
@@ -201,6 +206,7 @@ public class pacman : MonoBehaviour {
 				cameraMenu.SetActive (true);
 				menu.SetActive (true);
 				cameraPlayer.SetActive (false);
+				looser = true;
 				SceneManager.LoadScene("Level1");
 			} else {
 				allAudio [3].Play ();
