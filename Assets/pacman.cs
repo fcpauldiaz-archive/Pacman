@@ -21,6 +21,7 @@ public class pacman : MonoBehaviour {
 	public Button startButton;
 	public Button newGameButton;
 	public GameObject[] ghosts;
+	public static bool finish = false;
 	public bool gamePaused = true;
 	public bool inversePlay = false;
 	public static bool resetGame = false;
@@ -29,6 +30,8 @@ public class pacman : MonoBehaviour {
 	public int score;
 	public float targetTime = 0.2f;
 	public float rBase = 180f;
+	public static float stepFollow = 50f;
+	public static float stepAway = 1.2f;
 	public float staticYPacm;
 	public AudioSource[] allAudio;
 	public float speed = 1.0f;
@@ -53,6 +56,12 @@ public class pacman : MonoBehaviour {
 		loose.SetActive (looser);
 		looser = false;
 		winner = false;
+		if (finish == true) {
+			stepAway += 2f;
+			stepFollow += 30f; 
+
+		}
+
 		menu = GameObject.Find ("MainMenu");
 		if (resetGame == true) {
 			startOnClick ();
@@ -90,7 +99,7 @@ public class pacman : MonoBehaviour {
 			{
 				// pacman runs away from ghosts
 				if (inversePlay == false) {
-					float step = (50f + Random.Range(-20.0f, 30.0f)) * Time.deltaTime;
+					float step = (stepFollow + Random.Range(-20.0f, 30.0f)) * Time.deltaTime;
 					//gh.transform.Rotate(0, 0 , 180 + Random.Range(-30.0f, 30.0f));
 					gh.transform.position = Vector3.MoveTowards(gh.transform.position, pacm.transform.position, step);
 				}
@@ -111,7 +120,7 @@ public class pacman : MonoBehaviour {
 					}
 
 					gh.transform.Rotate(0, rBase + Random.Range(-40.0f, 40.0f) , 0); 
-					gh.transform.Translate(new Vector3(0, 0, 1.2f));
+					gh.transform.Translate(new Vector3(0, 0, stepAway));
 				}
 
 				Vector3 temp2 = gh.transform.position; // copy to an auxiliary variable...
@@ -168,14 +177,26 @@ public class pacman : MonoBehaviour {
 
 			if (score >= 30) {
 				//player wins or finish this level.
-				allAudio [1].Stop ();
-				allAudio [2].Play ();
-				gamePaused = true;
-				cameraMenu.SetActive (true);
-				menu.SetActive (true);
-				cameraPlayer.SetActive (false);
-				winner = true;
-				SceneManager.LoadScene("Level1");
+				if (finish == true) {
+					allAudio [1].Stop ();
+					gamePaused = true;
+					cameraMenu.SetActive (true);
+					menu.SetActive (true);
+					cameraPlayer.SetActive (false);
+
+					winner = true;
+					finish = false;
+					stepAway = 1.2f;
+					stepFollow = 50f; 
+					SceneManager.UnloadScene ("Level2");
+					SceneManager.LoadScene ("Level1");
+				} else {
+					
+					resetGame = true;
+					SceneManager.UnloadScene ("Level1");
+					SceneManager.LoadScene ("Level2");
+					finish = true;
+				}
 			}
 		}
 
@@ -207,6 +228,9 @@ public class pacman : MonoBehaviour {
 				menu.SetActive (true);
 				cameraPlayer.SetActive (false);
 				looser = true;
+				finish = false;
+				stepAway = 1.2f;
+				stepFollow = 50f; 
 				SceneManager.LoadScene("Level1");
 			} else {
 				allAudio [3].Play ();
@@ -259,6 +283,8 @@ public class pacman : MonoBehaviour {
 
 	public void newGameClick() {
 		resetGame = true;
+		stepAway = 1.2f;
+		stepFollow = 50f; 
 		SceneManager.LoadScene("Level1");
 
 
