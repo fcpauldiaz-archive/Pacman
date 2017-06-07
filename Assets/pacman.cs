@@ -76,19 +76,12 @@ public class pacman : MonoBehaviour {
 
 		}
 		if (gamePaused == false) {
-			if (pacm.transform.position.y != staticYPacm) {
-				//Vector3 temp2 = pacm.transform.position; // copy to an auxiliary variable...
-				//temp2.y = staticYPacm;
-				//pacm.transform.position = temp2;
-
-
-			}
 
 			foreach (GameObject gh in ghosts)
 			{
 				// pacman runs away from ghosts
 				if (inversePlay == false) {
-					float step = (50f + Random.Range(-20.0f, 40.0f)) * Time.deltaTime;
+					float step = (50f + Random.Range(-20.0f, 30.0f)) * Time.deltaTime;
 					//gh.transform.Rotate(0, 0 , 180 + Random.Range(-30.0f, 30.0f));
 					gh.transform.position = Vector3.MoveTowards(gh.transform.position, pacm.transform.position, step);
 				}
@@ -113,11 +106,16 @@ public class pacman : MonoBehaviour {
 				}
 
 				Vector3 temp2 = gh.transform.position; // copy to an auxiliary variable...
-
+				Quaternion temp22 = gh.transform.rotation;
+				Vector3 temp3 = pacm.transform.position;
 				temp2.y = 97f;
-
+				temp22.x = 0f;
+				temp22.z = 0f;
+				temp3.y = 97f;
 				gh.transform.position = temp2;
-				//Debug.Log ("y pos " + gh.transform.position.y);
+				gh.transform.rotation = temp22;
+				pacm.transform.position = temp3;
+
 
 
 			}
@@ -159,7 +157,7 @@ public class pacman : MonoBehaviour {
 
 			}
 
-			if (score >= 30) {
+			if (score >= 50) {
 				//player wins or finish this level.
 
 			}
@@ -183,6 +181,29 @@ public class pacman : MonoBehaviour {
 
 	public void OnCollisionEnter (Collision col) {
 		Debug.Log ("hit " + col.gameObject.name);
+		if (col.gameObject.name.Contains ("ghost")) {
+			//lost game or one heart
+			if (inversePlay == false) {
+				allAudio [1].Stop ();
+				allAudio [2].Play ();
+				gamePaused = true;
+				cameraMenu.SetActive (true);
+				menu.SetActive (true);
+				cameraPlayer.SetActive (false);
+				SceneManager.LoadScene("Level1");
+			} else {
+				allAudio [3].Play ();
+				//earn points for eating a ghost
+				score = score + 10;
+				//reset ghost position to some standard
+				Vector3 temp = col.gameObject.transform.position; // copy to an auxiliary variable...
+				temp.x = 82f;
+				temp.y = -15f;
+				temp.z = -42.6f;
+				col.gameObject.transform.position = temp;
+			}
+
+		}
 		// Physics.IgnoreCollision(col.gameObject.GetComponent<SphereCollider>(), GetComponent<SphereCollider>());
 
 	}
@@ -202,34 +223,12 @@ public class pacman : MonoBehaviour {
 			allAudio [4].Play ();
 			Destroy(col.gameObject);
 		}
-		if (col.gameObject.name.Contains ("ghost")) {
-			//lost game or one heart
-			if (inversePlay == false) {
-				allAudio [1].Stop ();
-				allAudio [2].Play ();
-				gamePaused = true;
-				cameraMenu.SetActive (true);
-				menu.SetActive (true);
-				cameraPlayer.SetActive (false);
-				SceneManager.LoadScene("Sample");
-			} else {
-				allAudio [3].Play ();
-				//earn points for eating a ghost
-				score = score + 10;
-				//reset ghost position to some standard
-				Vector3 temp = col.gameObject.transform.position; // copy to an auxiliary variable...
-				temp.x = 82f;
-				temp.y = -15f;
-				temp.z = -42.6f;
-				col.gameObject.transform.position = temp;
-			}
 
-		}
 	}
 
 	public void OnGUI(){
 		if (gamePaused == false) {
-			GUI.Box(new Rect(Screen.width/2+200,Screen.height/2-150,100,25), "Score " + score);
+			GUI.Box(new Rect(Screen.width/2-300,Screen.height/2-150,100,25), "Score " + score);
 		}
 	}
 
@@ -237,13 +236,13 @@ public class pacman : MonoBehaviour {
 		inversePlay = false;
 		allAudio [4].Stop ();
 		allAudio [1].Play ();
-		targetTime = 0.2f;
+		targetTime = 10f;
 
 	}
 
 	public void newGameClick() {
 		resetGame = true;
-		SceneManager.LoadScene("Sample");
+		SceneManager.LoadScene("Level1");
 
 
 	}
