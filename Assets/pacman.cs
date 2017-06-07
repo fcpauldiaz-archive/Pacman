@@ -191,7 +191,7 @@ public class pacman : MonoBehaviour {
 	}
 
 	public void OnCollisionEnter (Collision col) {
-		Debug.Log ("hit " + col.gameObject.name);
+		
 		if (col.gameObject.name.Contains ("ghost")) {
 			//lost game or one heart
 			if (inversePlay == false) {
@@ -220,7 +220,7 @@ public class pacman : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter(Collider col) {
-		Debug.Log (col.gameObject.name);
+		
 
 		if (col.gameObject.name.Contains("apple")) {
 			allAudio [5].Play ();
