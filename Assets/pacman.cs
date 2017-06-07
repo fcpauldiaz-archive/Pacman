@@ -16,12 +16,16 @@ public class pacman : MonoBehaviour {
 	public GameObject cameraMenu;
 	public Button newGame;
 	public GameObject menu;
+	public GameObject win;
+	public GameObject loose;
 	public Button startButton;
 	public Button newGameButton;
 	public GameObject[] ghosts;
 	public bool gamePaused = true;
 	public bool inversePlay = false;
 	public static bool resetGame = false;
+	public static bool winner = false;
+	public static bool looser = false;
 	public int score;
 	public float targetTime = 0.2f;
 	public float rBase = 180f;
@@ -43,6 +47,10 @@ public class pacman : MonoBehaviour {
 		allAudio  = GetComponents<AudioSource>();
 		startButton.onClick.AddListener(startOnClick);
 		newGameButton.onClick.AddListener (newGameClick);
+		win = GameObject.Find ("WinnerPannel");
+		win.SetActive (false);
+		loose = GameObject.Find ("LooserPanel");
+		loose.SetActive (false);
 
 		menu = GameObject.Find ("MainMenu");
 		if (resetGame == true) {
@@ -159,6 +167,9 @@ public class pacman : MonoBehaviour {
 
 			if (score >= 50) {
 				//player wins or finish this level.
+				cameraMenu.SetActive (true);
+				win.SetActive (true);
+				cameraPlayer.SetActive (false);
 
 			}
 		}
